@@ -92,4 +92,3 @@ plt.xlabel("Predicted Probability of Fraud (%)")
 plt.savefig("top_10_risk_chart.png", bbox_inches='tight')
 plt.close()
 
-print("All visual files saved successfully! Your project is ready.")
