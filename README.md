@@ -1,4 +1,3 @@
---------------------------------------------------------------------------------
 # Pre-AGM Sustainability Audit & Root Cause Analysis
 
 *Disclaimer: This is a simulated data analytics portfolio project. The dataset was synthetically generated using Python. The business context and risk factors are drawn from publicly available ING 2026 documents for structural realism, but do not represent actual internal company data.*
@@ -6,7 +5,7 @@
 ## 1. Executive Summary & Business Context
 ING’s Annual General Meeting (AGM) is scheduled for April 14, 2026, where the Executive Board will discuss the 2025 Sustainability Statement. With the potential presence of activist groups anticipated at the event, ensuring the integrity of ING's sustainability reporting is a critical priority.
 
-ING monitors significant operational risks, including breaches of security, inadequate controls regarding third-party vendors, and flawed outputs from AI algorithms [4]. In this simulated scenario, an anomaly was detected involving a third-party server leak that potentially exposed falsified corporate carbon emissions (greenwashing). This threatens a portion of ING's €34 billion in "sustainable volume mobilised" and risks damaging the bank's Sustainalytics ESG risk rating of 18.0 (low risk).
+ING monitors significant operational risks, including breaches of security, inadequate controls regarding third-party vendors, and flawed outputs from AI algorithms. In this simulated scenario, an anomaly was detected involving a third-party server leak that potentially exposed falsified corporate carbon emissions (greenwashing). This threatens a portion of ING's €34 billion in "sustainable volume mobilised" and risks damaging the bank's Sustainalytics ESG risk rating of 18.0 (low risk).
 
 ## 2. The Business Question
 To cut through the noise and drive executive action, this project aims to answer both descriptive and predictive questions:
@@ -25,7 +24,7 @@ This project utilizes a structured Root Cause Analysis and Machine Learning to i
 *   **Machine Learning (Random Forest Classifier):** Addressed AI vulnerability risks by training a classification model to learn the mathematical profile of a compromised account. The model successfully scanned un-breached accounts to predict their "Fraud Probability Score."
 
 ## 5. Visual Insights & Dashboard
-*The visuals below translate the technical data and Machine Learning predictions into actionable business insights.* 
+*The visuals below translate the technical data and Machine Learning predictions into actionable business insights.*
 
 ### A. The Financial Risk (KPIs)
 ![Financial Risk Bar Chart](kpi_chart.png)
@@ -37,15 +36,13 @@ This project utilizes a structured Root Cause Analysis and Machine Learning to i
 
 ### C. Machine Learning Early Warning System
 ![Top 10 Risk Chart](top_10_risk_chart.png)
-*Insight:* The Random Forest classification model identified the top 10 currently "secure" clients whose reporting behaviors mathematically mirror the fraudulent accounts. **Recommendation: Immediately audit these 10 accounts prior to the AGM.** 
+*Insight:* The Random Forest classification model identified the top 10 currently "secure" clients whose reporting behaviors mathematically mirror the fraudulent accounts. **Recommendation: Immediately audit these 10 accounts prior to the AGM.**
 
 ## 6. Deliverables & Recommendations
 Because an executive preparing for a board meeting requires rapid, actionable insights, the final output is translated into plain-language business recommendations.
 
 **Repository Files:**
-*   `data_generation.py`: The Python script used to model the business scenario, synthesize the data, and train the Random Forest ML model.
+*   `data_generation.py`: The Python script used to model the business scenario, synthesize the data, and train the Random Forest model.
 *   `mock_ing_esg_azure_leak_with_ML.csv`: The generated synthetic dataset with ML predictions.
-*   `ING_Pre_AGM_Audit_Dashboard.pbix`: **The interactive Power BI dashboard containing the KPI tracking and ML risk visualizations.**
+*   `ING_Pre_AGM_Audit_Dashboard.pbix`: The interactive Power BI dashboard containing the KPI tracking and ML risk visualizations.
 *   `Pre_AGM_Executive_Deck.pdf`: A 3-slide executive presentation leading with action titles, designed to present the root cause and advise the Executive Board on immediate mitigation strategies prior to the AGM.
-
---------------------------------------------------------------------------------
