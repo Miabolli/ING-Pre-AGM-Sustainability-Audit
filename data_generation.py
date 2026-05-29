@@ -59,7 +59,7 @@ df['Predicted_Fraud_Probability_%'] = (rf_model.predict_proba(X)[:, 1] * 100).ro
 
 # Save the dataset to your computer
 df.to_csv("mock_ing_esg_azure_leak_with_ML.csv", index=False)
-print("Dataset saved as CSV: mock_ing_esg_azure_leak_with_ML.csv")
+print("✓ Dataset saved as CSV: mock_ing_esg_azure_leak_with_ML.csv")
 
 # --- PART 3: GENERATING VISUALIZATIONS ---
 print("Generating Executive Visualizations...")
@@ -73,7 +73,29 @@ plt.title("Sustainable Volume at Risk (in Billions EUR)", fontsize=14, fontweigh
 plt.ylabel("Volume (Billions EUR)")
 plt.savefig("kpi_chart.png", bbox_inches='tight')
 plt.close()
+print("✓ Saved: kpi_chart.png")
 
 # Visual 2: The Root Cause / Greenwashing Anomaly (Scatter Plot)
 plt.figure(figsize=(8, 5))
-sns.scatterplot(data=df, x='Self_Reported_Emiss
+sns.scatterplot(data=df, x='Self_Reported_Emissions_Tons', y='Audited_Emissions_Tons', 
+                hue='Azure_Security_Flag', palette={0: '#1f77b4', 1: '#d62728'}, alpha=0.6)
+plt.plot([0, 50000], [0, 50000], 'k--', linewidth=1) # Perfect match baseline
+plt.title("Self-Reported vs. Audited Emissions", fontsize=14, fontweight='bold')
+plt.savefig("scatter_plot.png", bbox_inches='tight')
+plt.close()
+print("✓ Saved: scatter_plot.png")
+
+# Visual 3: ML Early Warning System (Top 10 Risk Clients)
+top_10_risk = df[df['Azure_Security_Flag'] == 0].nlargest(10, 'Predicted_Fraud_Probability_%')
+plt.figure(figsize=(10, 5))
+sns.barplot(data=top_10_risk, x='Predicted_Fraud_Probability_%', y='Client_ID', color='#ff7f0e')
+plt.title("Top 10 Currently 'Secure' Clients at High Risk of Fraud", fontsize=14, fontweight='bold')
+plt.xlabel("Predicted Probability of Fraud (%)")
+plt.savefig("top_10_risk_chart.png", bbox_inches='tight')
+plt.close()
+print("✓ Saved: top_10_risk_chart.png")
+
+print("\n=== SUMMARY ===")
+print(f"Total clients: {len(df)}")
+print(f"Breached: {(df['Azure_Security_Flag'] == 1).sum()}")
+print(f"Secure: {(df['Azure_Security_Flag'] == 0).sum()}")
