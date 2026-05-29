@@ -15,7 +15,7 @@ industries = np.random.choice(["Logistics", "Energy", "Retail", "Manufacturing",
 loan_amounts = np.random.uniform(5_000_000, 60_000_000, size=num_clients).round(2)
 
 # Simulating the Azure leak: 15% of clients are compromised (1), 85% are secure (0)
-azure_flags = np.random.choice(, size=num_clients, p=[0.85, 0.15])
+azure_flags = np.random.choice([0, 1], size=num_clients, p=[0.85, 0.15])
 
 self_reported = np.random.uniform(1000, 50000, size=num_clients).round(2)
 audited = np.copy(self_reported)
@@ -76,19 +76,4 @@ plt.close()
 
 # Visual 2: The Root Cause / Greenwashing Anomaly (Scatter Plot)
 plt.figure(figsize=(8, 5))
-sns.scatterplot(data=df, x='Self_Reported_Emissions_Tons', y='Audited_Emissions_Tons', 
-                hue='Azure_Security_Flag', palette={0: '#1f77b4', 1: '#d62728'}, alpha=0.6)
-plt.plot(, , 'k--', linewidth=1) # Perfect match baseline
-plt.title("Self-Reported vs. Audited Emissions", fontsize=14, fontweight='bold')
-plt.savefig("scatter_plot.png", bbox_inches='tight')
-plt.close()
-
-# Visual 3: ML Early Warning System (Top 10 Risk Clients)
-top_10_risk = df[df['Azure_Security_Flag'] == 0].nlargest(10, 'Predicted_Fraud_Probability_%')
-plt.figure(figsize=(10, 5))
-sns.barplot(data=top_10_risk, x='Predicted_Fraud_Probability_%', y='Client_ID', color='#ff7f0e')
-plt.title("Top 10 Currently 'Secure' Clients at High Risk of Fraud", fontsize=14, fontweight='bold')
-plt.xlabel("Predicted Probability of Fraud (%)")
-plt.savefig("top_10_risk_chart.png", bbox_inches='tight')
-plt.close()
-
+sns.scatterplot(data=df, x='Self_Reported_Emiss
